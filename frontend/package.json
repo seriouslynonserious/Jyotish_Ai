@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve --poll=1000",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "test": "node --test tests/astrology.test.cjs"
   },
   "private": true,
   "packageManager": "npm@11.19.0",

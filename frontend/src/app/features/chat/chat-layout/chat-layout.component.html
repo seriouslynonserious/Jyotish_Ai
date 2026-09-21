@@ -1,4 +1,4 @@
-<div class="layout">
+<div class="layout" [class.dark]="darkMode()">
   <div id="sidebar" class="sidebar" [class.open]="sidebarOpen">
     <app-sidebar (newChat)="newChat()" />
   </div>
@@ -18,7 +18,14 @@
           ☰</button
         ><span>YOUR SPACE FOR CLARITY</span>
       </div>
-      <span class="preview"><i></i> Phase 1 preview</span>
+      <button
+        class="theme-toggle"
+        [attr.aria-pressed]="darkMode()"
+        aria-label="Dark mode"
+        (click)="darkMode.set(!darkMode())"
+      >
+        {{ darkMode() ? '☀ Light mode' : '☾ Dark mode' }}
+      </button>
     </header>
     @if (messages().length === 0) {
       <section class="welcome">

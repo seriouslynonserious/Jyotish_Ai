@@ -1,4 +1,11 @@
 :root {
+  --page: #fdfdfb;
+  --surface: #ffffff;
+  --on-accent: #ffffff;
+  --sidebar: #f6f5f2;
+  --bubble: #f4f3ef;
+  --subtle: #e9e7e0;
+  --disabled: #eaebe5;
   --ink: #30362d;
   --muted: #888d80;
   --accent: #677b50;
@@ -56,4 +63,20 @@ summary:focus-visible {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+
+.layout.dark {
+  color-scheme: dark;
+  --page: #171b18;
+  --surface: #242b25;
+  --on-accent: #171b18;
+  --sidebar: #1e241f;
+  --bubble: #2b342d;
+  --subtle: #354037;
+  --disabled: #343d35;
+  --ink: #e7ece3;
+  --muted: #aeb8a8;
+  --accent: #b0c894;
+  --border: #404a3e;
+  color: var(--ink);
 }

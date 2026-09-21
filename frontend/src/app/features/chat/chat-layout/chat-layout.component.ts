@@ -21,6 +21,7 @@ export class ChatLayoutComponent implements OnDestroy {
   messages = signal<ChatMessage[]>([]);
   waiting = signal(false);
   sidebarOpen = false;
+  darkMode = signal(false);
   private nextId = 1;
   private replyTimer?: ReturnType<typeof setTimeout>;
   private needsScroll = false;

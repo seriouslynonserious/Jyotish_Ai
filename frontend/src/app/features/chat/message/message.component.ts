@@ -36,7 +36,7 @@ import { ChatMessage } from '../../../core/models/chat-message.model';
     .user p {
       display: inline-block;
       text-align: left;
-      background: #f4f3ef;
+      background: var(--bubble);
       padding: 14px 20px;
       border-radius: 18px;
     }

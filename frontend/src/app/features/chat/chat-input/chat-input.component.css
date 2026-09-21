@@ -3,8 +3,8 @@
   width: 100%;
 }
 .composer {
-  background: white;
-  border: 1px solid #deded7;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 20px;
   padding: 18px 18px 12px;
   box-shadow: 0 5px 24px #24251f06;
@@ -47,13 +47,13 @@ textarea::placeholder {
   border: 0;
   border-radius: 50%;
   background: var(--accent);
-  color: white;
+  color: var(--on-accent);
   font-size: 25px;
   display: grid;
   place-items: center;
 }
 .send:disabled {
-  background: #eaebe5;
+  background: var(--disabled);
   color: #a9aca1;
   cursor: default;
 }
@@ -65,7 +65,7 @@ textarea::placeholder {
   margin-top: 22px;
 }
 .suggestions button {
-  background: white;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 9px;
   padding: 10px 14px;

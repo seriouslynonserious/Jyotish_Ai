@@ -12,7 +12,7 @@ main {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: #fdfdfb;
+  background: var(--page);
 }
 header {
   height: 80px;
@@ -39,7 +39,7 @@ header > div > span {
   gap: 7px;
   font-size: 10px;
   color: #85897c;
-  border: 1px solid #e6e7df;
+  border: 1px solid var(--border);
   padding: 7px 11px;
   border-radius: 20px;
 }
@@ -243,4 +243,13 @@ footer span {
   footer {
     padding: 12px;
   }
+}
+
+.theme-toggle {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 20px;
+  padding: 8px 12px;
+  font-size: 11px;
+  white-space: nowrap;
 }
