@@ -1,0 +1,104 @@
+:host {
+  display: block;
+  width: 100%;
+}
+.composer {
+  background: white;
+  border: 1px solid #deded7;
+  border-radius: 20px;
+  padding: 18px 18px 12px;
+  box-shadow: 0 5px 24px #24251f06;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.composer:focus-within {
+  border-color: #8c9986;
+  box-shadow: 0 5px 28px #485c4910;
+}
+textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 56px;
+  max-height: 180px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  line-height: 1.6;
+  font-size: 15px;
+  color: var(--ink);
+}
+textarea::placeholder {
+  color: #969891;
+}
+.composer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.composer-bottom > span {
+  font-size: 11px;
+  color: #a0a198;
+}
+.send {
+  width: 37px;
+  height: 37px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  font-size: 25px;
+  display: grid;
+  place-items: center;
+}
+.send:disabled {
+  background: #eaebe5;
+  color: #a9aca1;
+  cursor: default;
+}
+.suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.suggestions button {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 14px;
+  font-size: 12px;
+  animation: rise-in 0.5s ease both;
+}
+.suggestions button:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.suggestions button:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.suggestions button:nth-child(4) {
+  animation-delay: 0.24s;
+}
+.suggestions span {
+  color: #a0a396;
+  margin-left: 10px;
+}
+@media (max-width: 480px) {
+  .composer {
+    padding: 14px;
+  }
+  .composer-bottom > span {
+    font-size: 10px;
+  }
+  .suggestions {
+    gap: 7px;
+  }
+  .suggestions button {
+    padding: 9px 11px;
+  }
+  .suggestions span {
+    display: none;
+  }
+}

@@ -1,0 +1,31 @@
+<div class="composer">
+  <textarea
+    aria-label="Your message"
+    [(ngModel)]="draft"
+    (keydown)="onKeydown($event)"
+    rows="2"
+    [placeholder]="
+      showSuggestions() ? 'Ask anything about your future...' : 'Message Jyotish AI...'
+    "
+  ></textarea>
+  <div class="composer-bottom">
+    <span>✧ &nbsp; A new perspective starts here</span>
+    <button
+      class="send"
+      aria-label="Send message"
+      [disabled]="!draft.trim() || busy()"
+      (click)="send()"
+    >
+      ↑
+    </button>
+  </div>
+</div>
+@if (showSuggestions()) {
+  <div class="suggestions">
+    @for (suggestion of suggestions; track suggestion.label) {
+      <button (click)="send(suggestion.prompt)" [disabled]="busy()">
+        {{ suggestion.label }} <span>↗</span>
+      </button>
+    }
+  </div>
+}

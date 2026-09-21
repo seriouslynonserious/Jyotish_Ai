@@ -1,0 +1,67 @@
+<div class="layout">
+  <div id="sidebar" class="sidebar" [class.open]="sidebarOpen">
+    <app-sidebar (newChat)="newChat()" />
+  </div>
+  @if (sidebarOpen) {
+    <button class="backdrop" aria-label="Close sidebar" (click)="sidebarOpen = false"></button>
+  }
+  <main>
+    <header>
+      <div>
+        <button
+          class="menu"
+          aria-label="Toggle sidebar"
+          [attr.aria-expanded]="sidebarOpen"
+          aria-controls="sidebar"
+          (click)="sidebarOpen = !sidebarOpen"
+        >
+          ☰</button
+        ><span>YOUR SPACE FOR CLARITY</span>
+      </div>
+      <span class="preview"><i></i> Phase 1 preview</span>
+    </header>
+    @if (messages().length === 0) {
+      <section class="welcome">
+        <div class="intro">
+          <div class="star">✦</div>
+          <p class="eyebrow">A LITTLE GUIDANCE. A WORLD OF POSSIBILITIES.</p>
+          <h1>Jyotish <span>AI</span></h1>
+          <h2>How can I help you today?</h2>
+          <p class="subtitle">Bring your questions. Explore what lies ahead.</p>
+        </div>
+        <app-chat-input (sendMessage)="sendMessage($event)" />
+        <p class="hint">Your next chapter begins with a question.</p>
+      </section>
+    } @else {
+      <section
+        class="conversation"
+        #conversation
+        aria-label="Conversation"
+        aria-live="polite"
+        aria-relevant="additions text"
+      >
+        <div class="messages">
+          @for (message of messages(); track message.id) {
+            <app-message [message]="message" />
+          }
+          @if (waiting()) {
+            <div class="typing" role="status" aria-label="Jyotish AI is preparing a demo response">
+              <span>✦</span><i></i><i></i><i></i>
+            </div>
+          }
+        </div>
+      </section>
+      <div class="bottom-composer">
+        <app-chat-input
+          [showSuggestions]="false"
+          [busy]="waiting()"
+          (sendMessage)="sendMessage($event)"
+        />
+      </div>
+    }
+    <footer>
+      ✧ &nbsp; A thoughtful guide, not a certainty.
+      <span>Demo only · No predictions generated</span>
+    </footer>
+  </main>
+</div>

@@ -1,0 +1,126 @@
+aside {
+  height: 100%;
+  padding: 30px 20px 18px;
+  display: flex;
+  flex-direction: column;
+  background: #f6f5f2;
+  border-right: 1px solid var(--border);
+}
+.brand {
+  display: flex;
+  gap: 11px;
+  align-items: center;
+  font-size: 26px;
+  color: var(--accent);
+  text-decoration: none;
+}
+.brand span {
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.7px;
+  color: var(--ink);
+}
+.new-chat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 35px 0 33px;
+  padding: 13px 14px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: left;
+}
+.edit {
+  margin-left: auto;
+  color: var(--muted);
+}
+h2 {
+  font-size: 10px;
+  letter-spacing: 1.6px;
+  color: var(--muted);
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+}
+h2 span {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #9a9690;
+}
+.history p {
+  font-size: 13px;
+  padding: 10px 4px;
+  margin: 4px 0;
+  color: #5f605b;
+}
+.history p span {
+  margin-right: 10px;
+  color: #96958e;
+}
+.sidebar-bottom {
+  margin-top: auto;
+}
+.note {
+  border: 1px solid #e5e3dc;
+  padding: 17px 13px;
+  border-radius: 12px;
+  margin: 25px 0;
+  color: var(--muted);
+}
+.note > span {
+  display: block;
+  font-size: 24px;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.note strong {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.note p {
+  font-size: 11px;
+  line-height: 1.8;
+  margin: 7px 0 0;
+}
+summary {
+  cursor: pointer;
+  font-size: 13px;
+  padding: 12px 4px;
+}
+details p {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--muted);
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.avatar {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #e9e7e0;
+}
+.profile small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  margin-top: 4px;
+}
+.status {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #839785;
+  margin-left: auto;
+}
