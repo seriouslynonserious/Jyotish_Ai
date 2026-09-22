@@ -1,0 +1,507 @@
+{
+  "source": "https://github.com/kuntayerkus/swisseph-wasm/blob/0490fcf69c91fa82f3e9211a7e2106fc26250a90/tools/golden/golden.tsv.gz",
+  "sha256": "b58e660ee3f78ce2f42b0e6c1c28126f9915b7ecb624ce58d27e15c567a789fc",
+  "description": "Published Swiss Ephemeris 2.10.03 native gcc/x86-64 results; extracted without regenerating expected values. JD is UT1, Lahiri mode 1.",
+  "cases": [
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 0,
+      "longitude": 295.4869590453836,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 1,
+      "longitude": 244.2783946486992,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 2,
+      "longitude": 296.6584877168134,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 3,
+      "longitude": 310.5741074427917,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 4,
+      "longitude": 211.03148570774354,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 5,
+      "longitude": 283.739294129006,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 6,
+      "longitude": 330.2114328576249,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2341987.0,
+      "body": 10,
+      "longitude": 166.571012266413,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 0,
+      "longitude": 294.93092288098296,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 1,
+      "longitude": 111.60427911122946,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 2,
+      "longitude": 279.36944480071145,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 3,
+      "longitude": 324.3582825359633,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 4,
+      "longitude": 295.09880216606194,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 5,
+      "longitude": 243.83856573329575,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 6,
+      "longitude": 269.3653101573856,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2415035.0,
+      "body": 10,
+      "longitude": 258.39368516984024,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 0,
+      "longitude": 294.6394887363315,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 1,
+      "longitude": 36.57190118777746,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 2,
+      "longitude": 294.28734196153357,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 3,
+      "longitude": 258.58382236335916,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 4,
+      "longitude": 338.8161401470723,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 5,
+      "longitude": 26.14484057917064,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 6,
+      "longitude": 40.298661289894945,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2451559.0,
+      "body": 10,
+      "longitude": 124.29938417536847,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 0,
+      "longitude": 295.38384935777754,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 1,
+      "longitude": 352.66183489625547,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 2,
+      "longitude": 311.42659018653166,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 3,
+      "longitude": 337.3666007891956,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 4,
+      "longitude": 35.92785035365489,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 5,
+      "longitude": 202.4728716829985,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 6,
+      "longitude": 206.30551271436744,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "tropical",
+      "jd": 2488084.0,
+      "body": 10,
+      "longitude": 350.17002088068216,
+      "flags": 260,
+      "returnedFlags": 260
+    },
+    {
+      "kind": "ayanamsha",
+      "jd": 2342138.0,
+      "longitude": 19.673704268076655
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 0,
+      "longitude": 64.5275069559468,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 1,
+      "longitude": 43.05622402341614,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 2,
+      "longitude": 42.557932892422556,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 3,
+      "longitude": 109.62035804106719,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 4,
+      "longitude": 199.3626115120621,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 5,
+      "longitude": 281.46969480586614,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2342138.0,
+      "body": 6,
+      "longitude": 324.6125122851953,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "ayanamsha",
+      "jd": 2415186.0,
+      "longitude": 22.471366902395328
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 0,
+      "longitude": 61.4194318051471,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 1,
+      "longitude": 271.3235578288837,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 2,
+      "longitude": 79.16167631070846,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 3,
+      "longitude": 91.49013328957864,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 4,
+      "longitude": 28.998963341047308,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 5,
+      "longitude": 221.24083549642472,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2415186.0,
+      "body": 6,
+      "longitude": 249.87794617424092,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "ayanamsha",
+      "jd": 2451711.0,
+      "longitude": 23.85902238270388
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 0,
+      "longitude": 60.82105038959951,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 1,
+      "longitude": 225.04509011622366,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 2,
+      "longitude": 83.7804629701434,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 3,
+      "longitude": 61.93124349193183,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 4,
+      "longitude": 65.45556872840591,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 5,
+      "longitude": 32.937793457666594,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2451711.0,
+      "body": 6,
+      "longitude": 31.04371596800887,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "ayanamsha",
+      "jd": 2488235.0,
+      "longitude": 25.26196914283322
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 0,
+      "longitude": 59.26588882000747,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 1,
+      "longitude": 150.5029971437598,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 2,
+      "longitude": 51.51776326014772,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 3,
+      "longitude": 21.22330442076825,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 4,
+      "longitude": 98.16211372251608,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 5,
+      "longitude": 168.09150982473162,
+      "flags": 65794,
+      "returnedFlags": 65858
+    },
+    {
+      "kind": "sidereal",
+      "jd": 2488235.0,
+      "body": 6,
+      "longitude": 174.68623504511118,
+      "flags": 65794,
+      "returnedFlags": 65858
+    }
+  ]
+}

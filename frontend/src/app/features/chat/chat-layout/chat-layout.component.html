@@ -36,6 +36,9 @@
           <h2>How can I help you today?</h2>
           <p class="subtitle">Bring your questions. Explore what lies ahead.</p>
         </div>
+        <button class="birth-start theme-toggle" (click)="enterBirthDetails()">
+          Enter birth details
+        </button>
         <app-chat-input (sendMessage)="sendMessage($event)" />
         <p class="hint">Your next chapter begins with a question.</p>
       </section>
@@ -51,24 +54,32 @@
           @for (message of messages(); track message.id) {
             <app-message [message]="message" />
           }
-          @if (waiting()) {
-            <div class="typing" role="status" aria-label="Jyotish AI is preparing a demo response">
-              <span>✦</span><i></i><i></i><i></i>
-            </div>
+          @if (showForm()) {
+            <app-birth-profile-form
+              [initial]="profile()"
+              [calculationError]="calculationError()"
+              [busy]="calculating()"
+              (save)="calculate($event)"
+              (cancel)="showForm.set(false)"
+            />
+          } @else if (chart(); as result) {
+            @if (profile(); as birth) {
+              <app-birth-chart-result
+                [chart]="result"
+                [profile]="birth"
+                (edit)="enterBirthDetails()"
+              />
+            }
           }
         </div>
       </section>
       <div class="bottom-composer">
-        <app-chat-input
-          [showSuggestions]="false"
-          [busy]="waiting()"
-          (sendMessage)="sendMessage($event)"
-        />
+        <app-chat-input [showSuggestions]="false" (sendMessage)="sendMessage($event)" />
       </div>
     }
     <footer>
       ✧ &nbsp; A thoughtful guide, not a certainty.
-      <span>Demo only · No predictions generated</span>
+      <span>Astronomical calculations · No predictions · <a href="source/jyotish-ai-source.tar.gz" download>Source (AGPL)</a> · <a href="source/swisseph-0.2.2-source.tar.gz" download>Ephemeris source</a></span>
     </footer>
   </main>
 </div>

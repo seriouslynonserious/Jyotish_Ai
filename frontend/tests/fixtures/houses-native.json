@@ -1,0 +1,222 @@
+{
+  "source": "https://github.com/kuntayerkus/swisseph-wasm/blob/0490fcf69c91fa82f3e9211a7e2106fc26250a90/tools/golden/golden.tsv.gz",
+  "convention": "Published native tropical whole-sign ascendant; UT1, north/east positive. Compare sidereal ascendant plus date-specific apparent Lahiri ayanamsha.",
+  "cases": [
+    {
+      "jd": 2342045.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.28903370074815
+    },
+    {
+      "jd": 2342045.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.4017608081227
+    },
+    {
+      "jd": 2342045.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 199.6213226847775
+    },
+    {
+      "jd": 2342045.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 44.16711049200158
+    },
+    {
+      "jd": 2378569.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.08843597471403
+    },
+    {
+      "jd": 2378569.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.13489317962791
+    },
+    {
+      "jd": 2378569.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 199.29315871309484
+    },
+    {
+      "jd": 2378569.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 43.94558180859339
+    },
+    {
+      "jd": 2396831.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 94.9820515415193
+    },
+    {
+      "jd": 2396831.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 73.9876387117058
+    },
+    {
+      "jd": 2396831.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 199.12565792879724
+    },
+    {
+      "jd": 2396831.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 43.83329062579096
+    },
+    {
+      "jd": 2415093.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 94.88767772678848
+    },
+    {
+      "jd": 2415093.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 73.86066772962077
+    },
+    {
+      "jd": 2415093.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 198.9726734464546
+    },
+    {
+      "jd": 2415093.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 43.73016154947618
+    },
+    {
+      "jd": 2433355.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 94.78443805374087
+    },
+    {
+      "jd": 2433355.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 73.72348859505574
+    },
+    {
+      "jd": 2433355.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 198.8031371192923
+    },
+    {
+      "jd": 2433355.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 43.61561679634667
+    },
+    {
+      "jd": 2451618.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.54909019743047
+    },
+    {
+      "jd": 2451618.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.70448205011373
+    },
+    {
+      "jd": 2451618.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 200.0949332912767
+    },
+    {
+      "jd": 2451618.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 44.49357950140358
+    },
+    {
+      "jd": 2460384.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.71492210240898
+    },
+    {
+      "jd": 2460384.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.91837508395312
+    },
+    {
+      "jd": 2460384.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 200.37221216633657
+    },
+    {
+      "jd": 2460384.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 44.681938677856834
+    },
+    {
+      "jd": 2469880.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.45395797686923
+    },
+    {
+      "jd": 2469880.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.57607663447355
+    },
+    {
+      "jd": 2469880.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 199.94213175201372
+    },
+    {
+      "jd": 2469880.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 44.390653861697764
+    },
+    {
+      "jd": 2488142.8854166665,
+      "latitude": 39.93,
+      "longitude": 32.86,
+      "tropicalAscendant": 95.3543047460252
+    },
+    {
+      "jd": 2488142.8854166665,
+      "latitude": 51.51,
+      "longitude": -0.13,
+      "tropicalAscendant": 74.44529676487811
+    },
+    {
+      "jd": 2488142.8854166665,
+      "latitude": -33.87,
+      "longitude": 151.21,
+      "tropicalAscendant": 199.77770358098687
+    },
+    {
+      "jd": 2488142.8854166665,
+      "latitude": 0.0,
+      "longitude": 0.0,
+      "tropicalAscendant": 44.27928542788548
+    }
+  ]
+}

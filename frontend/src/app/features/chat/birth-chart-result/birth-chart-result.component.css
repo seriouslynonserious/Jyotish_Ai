@@ -1,0 +1,81 @@
+article {
+  padding: 22px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 18px;
+  margin: 20px 0;
+  animation: rise-in 0.3s ease;
+}
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+h2 {
+  font-size: 18px;
+  margin: 0;
+}
+button {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: var(--page);
+}
+p {
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+  color: var(--muted);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 14px;
+}
+caption {
+  text-align: left;
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 12px;
+}
+th,
+td {
+  padding: 10px 0;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+td,
+th:last-child {
+  text-align: right;
+}
+tbody th {
+  font-weight: 400;
+}
+summary {
+  cursor: pointer;
+  font-size: 13px;
+}
+.limitation {
+  font-size: 12px;
+}
+@media (max-width: 420px) {
+  article {
+    padding: 16px;
+  }
+}
+.table-scroll {
+  overflow-x: auto;
+}
+table {
+  min-width: 550px;
+}
+th,
+td {
+  padding: 10px 8px;
+}
+a {
+  color: var(--accent);
+}

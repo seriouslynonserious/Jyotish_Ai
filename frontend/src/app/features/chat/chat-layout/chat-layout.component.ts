@@ -1,11 +1,12 @@
+import { Component, ElementRef, afterEveryRender, signal, viewChild } from '@angular/core';
+import { inject } from '@angular/core';
+import { AstrologyEngineService } from '../../../core/astrology/astrology-engine.service';
+import { BirthChart } from '../../../core/astrology/astrology.models';
 import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  afterEveryRender,
-  signal,
-  viewChild,
-} from '@angular/core';
+  BirthProfileFormComponent,
+  ChatBirthProfile,
+} from '../birth-profile-form/birth-profile-form.component';
+import { BirthChartResultComponent } from '../birth-chart-result/birth-chart-result.component';
 import { ChatMessage } from '../../../core/models/chat-message.model';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { MessageComponent } from '../message/message.component';
@@ -13,17 +14,28 @@ import { ChatInputComponent } from '../chat-input/chat-input.component';
 
 @Component({
   selector: 'app-chat-layout',
-  imports: [SidebarComponent, MessageComponent, ChatInputComponent],
+  imports: [
+    SidebarComponent,
+    MessageComponent,
+    ChatInputComponent,
+    BirthProfileFormComponent,
+    BirthChartResultComponent,
+  ],
   templateUrl: './chat-layout.component.html',
   styleUrl: './chat-layout.component.css',
 })
-export class ChatLayoutComponent implements OnDestroy {
+export class ChatLayoutComponent {
   messages = signal<ChatMessage[]>([]);
-  waiting = signal(false);
+  profile = signal<ChatBirthProfile | null>(null);
+  chart = signal<BirthChart | null>(null);
+  showForm = signal(false);
+  calculationError = signal('');
+  calculating = signal(false);
+  private calculationId = 0;
+  private engine = inject(AstrologyEngineService);
   sidebarOpen = false;
   darkMode = signal(false);
   private nextId = 1;
-  private replyTimer?: ReturnType<typeof setTimeout>;
   private needsScroll = false;
   private conversation = viewChild<ElementRef<HTMLElement>>('conversation');
 
@@ -37,37 +49,73 @@ export class ChatLayoutComponent implements OnDestroy {
     });
   }
 
-  sendMessage(content: string): void {
-    if (!content.trim() || this.waiting()) return;
-    this.messages.set([
-      ...this.messages(),
-      { id: this.nextId++, role: 'user', content: content.trim() },
-    ]);
-    this.waiting.set(true);
+  private addMessage(role: 'user' | 'assistant', content: string): void {
+    this.messages.update((messages) => [...messages, { id: this.nextId++, role, content }]);
     this.needsScroll = true;
-    this.replyTimer = setTimeout(() => {
-      this.messages.set([
-        ...this.messages(),
-        {
-          id: this.nextId++,
-          role: 'assistant',
-          content:
-            "I can help you explore that using Vedic astrology. This is a demo response.\n\nIn the next phase, I'll use your birth date, birth time and birthplace to calculate your chart and provide a personalised interpretation.",
-        },
-      ]);
-      this.waiting.set(false);
-      this.needsScroll = true;
-    }, 850);
+  }
+
+  enterBirthDetails(): void {
+    this.showForm.set(true);
+    this.calculationError.set('');
+    if (!this.messages().length)
+      this.addMessage(
+        'assistant',
+        'Please enter your birth date, time, place, coordinates, and timezone to calculate astronomical positions.',
+      );
+  }
+
+  sendMessage(content: string): void {
+    if (!content.trim()) return;
+    this.addMessage('user', content.trim());
+    if (!this.profile()) {
+      this.addMessage(
+        'assistant',
+        'Please enter your birth details below. I can calculate astronomical positions; predictions are not available yet.',
+      );
+      this.enterBirthDetails();
+    } else {
+      this.addMessage(
+        'assistant',
+        'These are calculated astronomical positions. Vedic chart interpretation and predictions are not available yet.',
+      );
+    }
+  }
+
+  async calculate(profile: ChatBirthProfile): Promise<void> {
+    if (this.calculating()) return;
+    const id = ++this.calculationId;
+    this.calculating.set(true);
+    this.calculationError.set('');
+    try {
+      const chart = await this.engine.calculateBirthChart(profile);
+      if (id !== this.calculationId) return;
+      this.profile.set(profile);
+      this.chart.set(chart);
+      this.showForm.set(false);
+      this.addMessage(
+        'assistant',
+        'Your astronomical positions are ready below. Vedic chart interpretation and predictions are not available yet.',
+      );
+    } catch (error) {
+      if (id !== this.calculationId) return;
+      this.calculationError.set(
+        error instanceof Error
+          ? error.message
+          : 'Calculation failed. Please check your birth details.',
+      );
+    } finally {
+      if (id === this.calculationId) this.calculating.set(false);
+    }
   }
 
   newChat(): void {
-    clearTimeout(this.replyTimer);
+    this.calculationId++;
+    this.calculating.set(false);
     this.messages.set([]);
-    this.waiting.set(false);
+    this.profile.set(null);
+    this.chart.set(null);
+    this.showForm.set(false);
+    this.calculationError.set('');
     this.sidebarOpen = false;
-  }
-
-  ngOnDestroy(): void {
-    clearTimeout(this.replyTimer);
   }
 }

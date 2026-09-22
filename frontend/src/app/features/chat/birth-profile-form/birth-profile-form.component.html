@@ -1,0 +1,82 @@
+<form [formGroup]="form" (ngSubmit)="submit()" novalidate aria-labelledby="birth-heading">
+  <h2 id="birth-heading">Your birth details</h2>
+  <p id="birth-help">
+    Search for your city or town, then select a match to fill coordinates and timezone. You can also
+    enter them manually.
+  </p>
+  <div class="fields">
+    <label>Date of birth<input type="date" formControlName="dateOfBirth" required /></label>
+    <label>Birth time<input type="time" step="1" formControlName="timeOfBirth" required /></label>
+    <label class="wide"
+      >Place of birth<input
+        type="text"
+        formControlName="placeOfBirth"
+        (input)="placeChanged()"
+        placeholder="City or town"
+        required
+    /></label>
+    <div class="wide location-search">
+      <button type="button" (click)="searchPlaces()" [disabled]="searching()">
+        {{ searching() ? 'Searching…' : 'Find birthplace' }}
+      </button>
+      <p class="lookup-note">
+        Only the place name is sent to
+        <a
+          href="https://open-meteo.com/en/docs/geocoding-api"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open-Meteo</a
+        >. Location data:
+        <a href="https://www.geonames.org/" target="_blank" rel="noopener noreferrer">GeoNames</a>.
+      </p>
+      <p role="status">{{ searchMessage() }}</p>
+      @for (place of matches(); track place.id) {
+        <button type="button" class="place-match" (click)="choosePlace(place)">
+          {{ place.name }} · {{ place.admin1 }} · {{ place.country }}
+          <small>{{ place.timezone }}</small>
+        </button>
+      }
+    </div>
+    <label
+      >Latitude<input
+        type="number"
+        step="any"
+        min="-90"
+        max="90"
+        formControlName="latitude"
+        placeholder="−90 to 90"
+        required
+        aria-describedby="birth-help"
+    /></label>
+    <label
+      >Longitude<input
+        type="number"
+        step="any"
+        min="-180"
+        max="180"
+        formControlName="longitude"
+        placeholder="−180 to 180"
+        required
+        aria-describedby="birth-help"
+    /></label>
+    <label class="wide"
+      >IANA timezone<input
+        type="text"
+        formControlName="timezone"
+        placeholder="e.g. Asia/Kolkata"
+        required
+        aria-describedby="birth-help"
+    /></label>
+  </div>
+  @if (error || calculationError()) {
+    <p class="error" role="alert">{{ error || calculationError() }}</p>
+  }
+  <div class="actions">
+    <button type="submit" [disabled]="busy()">
+      {{ busy() ? 'Calculating…' : 'Calculate positions' }}
+    </button>
+    @if (initial()) {
+      <button type="button" [disabled]="busy()" (click)="cancel.emit()">Cancel</button>
+    }
+  </div>
+</form>

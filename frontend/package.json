@@ -6,7 +6,10 @@
     "start": "ng serve --poll=1000",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "node --test tests/astrology.test.cjs"
+    "test": "node --test tests/astrology.test.cjs",
+    "source:archive": "node scripts/package-source.cjs",
+    "prebuild": "npm run source:archive",
+    "prestart": "npm run source:archive"
   },
   "private": true,
   "packageManager": "npm@11.19.0",
@@ -17,6 +20,8 @@
     "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
     "@angular/router": "^21.2.0",
+    "@js-temporal/polyfill": "^0.5.1",
+    "@kuntay/swisseph": "0.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -26,5 +31,6 @@
     "@angular/compiler-cli": "^21.2.0",
     "prettier": "^3.8.1",
     "typescript": "~5.9.2"
-  }
+  },
+  "license": "AGPL-3.0-or-later"
 }

@@ -253,3 +253,10 @@ footer span {
   font-size: 11px;
   white-space: nowrap;
 }
+
+.birth-start {
+  display: block;
+  margin: 0 auto 20px;
+}
+
+footer a { color: var(--muted); }
