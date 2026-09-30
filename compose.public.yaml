@@ -1,0 +1,43 @@
+# Standalone public-host deployment. Only the HTTPS gateway exposes host ports.
+services:
+  gateway:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN to your public hostname}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - backend
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-llama3.2:3b}
+      APP_ALLOWED_ORIGIN: https://${APP_DOMAIN:?Set APP_DOMAIN}
+    depends_on:
+      - ollama
+  ollama:
+    image: ollama/ollama:0.34.2
+    restart: unless-stopped
+    environment:
+      OLLAMA_NO_CLOUD: "1"
+    volumes:
+      - ollama-data:/root/.ollama
+volumes:
+  ollama-data:
+  caddy-data:
+  caddy-config:

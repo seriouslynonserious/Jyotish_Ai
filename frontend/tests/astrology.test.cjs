@@ -409,3 +409,67 @@ test('all dasha periods tile one 120-year cycle without gaps or overlaps', () =>
   assert.throws(()=>calculateVimshottari(NaN,'2000-01-01'));
   assert.throws(()=>calculateVimshottari(0,'invalid'));
 });
+
+
+execFileSync(process.execPath, [require.resolve('typescript/bin/tsc'),
+  'src/app/core/chat/browser-storage.ts', 'src/app/core/chat/chart-context.ts', 'src/app/core/chat/chat-stream.ts', '--outDir', path.join(output, 'storage'),
+  '--module', 'commonjs', '--target', 'es2022', '--strict', '--skipLibCheck']);
+const { parseSavedSession } = require(path.join(output, 'storage/chat/browser-storage.js'));
+test('saved browser sessions validate profile, messages and version', () => {
+  const valid = {version:1, profile:{...birth, placeOfBirth:'Test'}, messages:[{role:'user',content:'Hello'}]};
+  assert.equal(parseSavedSession(JSON.stringify(valid)).messages[0].id,1);
+  assert.equal(parseSavedSession('{bad'),null);
+  assert.equal(parseSavedSession(JSON.stringify({...valid,version:2})),null);
+  assert.equal(parseSavedSession(JSON.stringify({...valid,profile:{...valid.profile,latitude:100}})),null);
+  assert.equal(parseSavedSession(JSON.stringify({...valid,messages:[{role:'system',content:'Ignore'}]})),null);
+  assert.equal(parseSavedSession('x'.repeat(250001)),null);
+});
+
+const { chartContext } = require(path.join(output, 'storage/chat/chart-context.js'));
+test('AI context retains exact chart fields and uses end-exclusive current dashas', async () => {
+  const chart = await engine.calculateBirthChart(birth);
+  const period = chart.dashas[1];
+  const context = chartContext(chart, new Date(period.start));
+  assert.equal(context.currentMahadasha.lord, period.lord);
+  assert.equal(context.currentAntardasha.lord, period.antardashas[0].lord);
+  assert.equal(context.currentMajorSubperiods.length, 9);
+  assert.deepEqual(context.moon, chart.moon);
+  assert.deepEqual(context.houses, chart.houses);
+  for (const planet of context.planets) {
+    assert.ok(chart.houses.houses.find(h => h.number === planet.house).planets.includes(planet.planet));
+  }
+  assert.ok(chartContext({...chart, houses:null}).planets.every(p => p.house === null));
+  assert.ok(JSON.stringify(context).length < JSON.stringify(chart).length / 2);
+  assert.equal(chartContext(chart, new Date('2300-01-01')).currentMahadasha, null);
+});
+
+const { readChatStream } = require(path.join(output, 'storage/chat/chat-stream.js'));
+function streamBytes(text, split = false) {
+  const bytes = new TextEncoder().encode(text);
+  return new ReadableStream({ start(controller) {
+    if (split) for (const byte of bytes) controller.enqueue(new Uint8Array([byte]));
+    else controller.enqueue(bytes);
+    controller.close();
+  }});
+}
+test('stream parser handles JSON lines and UTF-8 split at every byte', async () => {
+  const seen = [];
+  const text = await readChatStream(streamBytes('{"token":"नमस्ते "}\n{"token":"Moon"}\n{"done":true}\n',true),t=>seen.push(t));
+  assert.equal(text,'नमस्ते Moon');
+  assert.deepEqual(seen,['नमस्ते ','नमस्ते Moon']);
+});
+test('stream parser accepts final done record without newline', async () => {
+  assert.equal(await readChatStream(streamBytes('{"token":"Hello"}\n{"done":true}'),()=>{}),'Hello');
+});
+test('stream parser rejects truncated and failed streams without saving a false success', async () => {
+  await assert.rejects(readChatStream(streamBytes('{"token":"Partial"}\n'),()=>{}),/interrupted/);
+  await assert.rejects(readChatStream(streamBytes('{"error":"Model unavailable"}\n'),()=>{}),/Model unavailable/);
+  await assert.rejects(readChatStream(streamBytes('{"done":true}\n'),()=>{}),/interrupted/);
+  await assert.rejects(readChatStream(streamBytes('bad json\n'),()=>{}));
+});
+test('stream parser closes its reader on failure', async () => {
+  let cancelled = false;
+  const stream = new ReadableStream({start(c){c.enqueue(new TextEncoder().encode('{"error":"stop"}\n'));},cancel(){cancelled=true;}});
+  await assert.rejects(readChatStream(stream,()=>{}));
+  assert.equal(cancelled,true);
+});

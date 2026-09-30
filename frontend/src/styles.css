@@ -1,18 +1,18 @@
 :root {
-  --page: #fdfdfb;
+  --page: #f5f8fb;
   --surface: #ffffff;
   --on-accent: #ffffff;
-  --sidebar: #f6f5f2;
-  --bubble: #f4f3ef;
-  --subtle: #e9e7e0;
-  --disabled: #eaebe5;
-  --ink: #30362d;
-  --muted: #888d80;
-  --accent: #677b50;
-  --border: #e5e6df;
+  --sidebar: #eef3f7;
+  --bubble: #e8f0f5;
+  --subtle: #dce8ef;
+  --disabled: #e5edf2;
+  --ink: #153348;
+  --muted: #5e7585;
+  --accent: #217787;
+  --border: #d7e3eb;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--ink);
-  background: #fdfdfb;
+  background: #f5f8fb;
 }
 * {
   box-sizing: border-box;
@@ -67,16 +67,31 @@ summary:focus-visible {
 
 .layout.dark {
   color-scheme: dark;
-  --page: #171b18;
-  --surface: #242b25;
-  --on-accent: #171b18;
-  --sidebar: #1e241f;
-  --bubble: #2b342d;
-  --subtle: #354037;
-  --disabled: #343d35;
-  --ink: #e7ece3;
-  --muted: #aeb8a8;
-  --accent: #b0c894;
-  --border: #404a3e;
+  --page: #091723;
+  --surface: #102638;
+  --on-accent: #091723;
+  --sidebar: #0c1d2c;
+  --bubble: #173449;
+  --subtle: #204155;
+  --disabled: #263e4c;
+  --ink: #e2edf5;
+  --muted: #a3bdcb;
+  --accent: #7cd4dc;
+  --border: #264354;
   color: var(--ink);
 }
+
+.logo-mark { display: inline-block; position: relative; width: 38px; height: 38px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #10334c; box-shadow: 0 0 0 1px #cba95d70; }
+.logo-mark img { position: absolute; width: 350%; max-width: none; height: auto; top: 50%; left: 50%; transform: translate(-50%, -42.5%); }
+input:focus-visible, textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+button:disabled { cursor: default; opacity: .6; }
+
+/* The same canvas stays mounted behind chat and the full-screen explorer. */
+body { background: #02050e; }
+.layout.dark { --page: transparent; --surface: #102638db; --sidebar: #081523bc; --bubble: #173449e8; }
+.layout > main, .layout > .sidebar { position: relative; z-index: 1; transition: opacity .5s, transform .5s; }
+.layout > main { margin: 14px max(24px, 14vw) 14px 18px; border: 1px solid #95c0d729; border-radius: 24px; background: #07142285; backdrop-filter: blur(.5px); box-shadow: 0 18px 70px #0004; }
+.layout > .sidebar { background: #0815239c; }
+.layout.space-explore > main, .layout.space-explore > .sidebar { opacity: 0; transform: translateY(18px); pointer-events: none; visibility: hidden; }
+@media(max-width:1100px) { .layout > main { margin-right: 40px; } }
+@media(max-width:760px) { .layout > main { margin: 8px 8px 48px; border-radius: 18px; }.layout > .sidebar { position: fixed; z-index: 3; } }

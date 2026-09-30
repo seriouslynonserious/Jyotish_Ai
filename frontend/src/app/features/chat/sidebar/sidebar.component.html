@@ -1,27 +1,15 @@
 <aside>
-  <a class="brand" href="/">✦ <span>Jyotish AI</span></a>
-  <button class="new-chat" (click)="newChat.emit()">
-    <span>＋</span> New Chat <span class="edit">↗</span>
-  </button>
+  <a class="brand" href="/"><span class="logo-mark"><img src="images/jyotish-logo.png" alt="Jyotish AI logo" /></span><span>Jyotish AI<small>YOUR COSMIC COMPANION</small></span></a>
+  <button class="new-chat" (click)="newChat.emit()"><span>＋</span> New reading <span class="edit">↗</span></button>
   <div class="history">
-    <h2>RECENT <span>DEMO</span></h2>
-    @for (chat of recentChats; track chat) {
-      <p><span>◷</span> {{ chat }}</p>
-    }
+    <h2>A LITTLE ORIENTATION</h2>
+    <p><span>01</span> Add your birth details</p>
+    <p><span>02</span> Discover your kundli</p>
+    <p><span>03</span> Talk through possibilities</p>
   </div>
   <div class="sidebar-bottom">
-    <div class="note">
-      <span>✧</span><strong>A little clarity, every day.</strong>
-      <p>A space for your questions<br />and possibilities.</p>
-    </div>
-    <details>
-      <summary>⚙ &nbsp; Settings</summary>
-      <p>Phase 1 preview. Chats stay in memory and reset when you refresh.</p>
-    </details>
-    <div class="profile">
-      <span class="avatar">Y</span>
-      <div>Your space<small>Local preview</small></div>
-      <span class="status"></span>
-    </div>
+    <div class="note"><span>✧</span><strong>The stars start a conversation.</strong><p>You decide where it goes. Explore your questions with curiosity, at your own pace.</p></div>
+    <details><summary>About your space</summary><p>Tara is an AI companion using your calculated chart. Interpretations can be mistaken. Saving is optional and stays in this browser.</p></details>
+    <div class="profile"><span class="avatar">✦</span><div>Your personal space<small>Local Ollama · no account needed</small></div></div>
   </div>
 </aside>

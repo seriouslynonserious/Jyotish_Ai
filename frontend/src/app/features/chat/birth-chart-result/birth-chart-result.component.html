@@ -1,6 +1,6 @@
 <article aria-labelledby="chart-heading">
   <div class="heading">
-    <h2 id="chart-heading">Lahiri sidereal birth chart</h2>
+    <h2 id="chart-heading">Your kundli · Lahiri sidereal birth chart</h2>
     <button (click)="edit.emit()">Edit birth details</button>
   </div>
   <p>{{ profile().placeOfBirth }} · {{ profile().dateOfBirth }} · {{ profile().timeOfBirth }}</p>
@@ -42,7 +42,7 @@
   @if (chart().houses; as houseChart) {
     <h3>Lagna and whole-sign houses</h3>
     <p>Lahiri Lagna: {{ houseChart.sign }} {{ houseChart.degreeInSign | number: '1.4-4' }}°</p>
-    <details>
+    <details open>
       <summary>View 12 houses</summary>
       @for (house of houseChart.houses; track house.number) {
         <p>House {{ house.number }} · {{ house.sign }} · {{ house.planets.join(', ') || 'No planets' }}</p>

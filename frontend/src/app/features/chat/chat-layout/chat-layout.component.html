@@ -1,11 +1,12 @@
-<div class="layout" [class.dark]="darkMode()">
-  <div id="sidebar" class="sidebar" [class.open]="sidebarOpen">
+<div class="layout dark" [class.space-explore]="exploring()">
+  <app-solar-system [exploring]="exploring()" (returnToChat)="leaveSpace()" />
+  <div id="sidebar" [inert]="exploring()" class="sidebar" [class.open]="sidebarOpen">
     <app-sidebar (newChat)="newChat()" />
   </div>
   @if (sidebarOpen) {
     <button class="backdrop" aria-label="Close sidebar" (click)="sidebarOpen = false"></button>
   }
-  <main>
+  <main [inert]="exploring()">
     <header>
       <div>
         <button
@@ -16,33 +17,15 @@
           (click)="sidebarOpen = !sidebarOpen"
         >
           ☰</button
-        ><span>YOUR SPACE FOR CLARITY</span>
+        ><span class="header-brand"><span class="logo-mark"><img src="images/jyotish-logo.png" alt="" /></span><span>Jyotish AI<small>A little clarity, written in the stars.</small></span></span>
       </div>
-      <button
-        class="theme-toggle"
-        [attr.aria-pressed]="darkMode()"
-        aria-label="Dark mode"
-        (click)="darkMode.set(!darkMode())"
-      >
-        {{ darkMode() ? '☀ Light mode' : '☾ Dark mode' }}
-      </button>
+      <button #exploreButton class="theme-toggle" (click)="enterSpace()">✧ Explore Solar System</button>
     </header>
-    @if (messages().length === 0) {
-      <section class="welcome">
-        <div class="intro">
-          <div class="star">✦</div>
-          <p class="eyebrow">A LITTLE GUIDANCE. A WORLD OF POSSIBILITIES.</p>
-          <h1>Jyotish <span>AI</span></h1>
-          <h2>How can I help you today?</h2>
-          <p class="subtitle">Bring your questions. Explore what lies ahead.</p>
-        </div>
-        <button class="birth-start theme-toggle" (click)="enterBirthDetails()">
-          Enter birth details
-        </button>
-        <app-chat-input (sendMessage)="sendMessage($event)" />
-        <p class="hint">Your next chapter begins with a question.</p>
-      </section>
-    } @else {
+    <nav class="journey" aria-label="Your reading progress">
+      <span [class.current]="showForm()" [attr.aria-current]="showForm() ? 'step' : null"><b>01</b> Birth details</span>
+      <i></i><span [class.current]="reviewingChart() && !showForm()" [attr.aria-current]="reviewingChart() && !showForm() ? 'step' : null"><b>02</b> Your kundli</span>
+      <i></i><span [class.current]="chart() && !reviewingChart() && !showForm()" [attr.aria-current]="chart() && !reviewingChart() && !showForm() ? 'step' : null"><b>03</b> Let's talk</span>
+    </nav>
       <section
         class="conversation"
         #conversation
@@ -51,35 +34,74 @@
         aria-relevant="additions text"
       >
         <div class="messages">
+          @if (showForm() && !profile()) {
+            <app-cosmic-welcome />
+          }
+          @if (chart(); as summary) {
+            @if (!showForm() && reviewingChart()) {
+              <div class="chart-highlights" aria-label="Your chart at a glance">
+                <div><span>ASCENDANT · LAGNA</span><strong>{{ summary.houses?.sign || 'Not calculated yet' }}</strong></div>
+                <div><span>MOON SIGN</span><strong>{{ summary.moon.sign }}</strong></div>
+                <div><span>NAKSHATRA</span><strong>{{ summary.moon.nakshatra }}</strong></div>
+              </div>
+            }
+          }
+          @if (!showForm()) {
+            @if (chart(); as result) {
+              @if (profile(); as birth) {
+                <details [open]="reviewingChart()">
+                  <summary>Your kundli · calculated birth chart</summary>
+                  <app-birth-chart-result [chart]="result" [profile]="birth" (edit)="enterBirthDetails()" />
+                </details>
+                @if (reviewingChart()) {
+                  <p>Review your kundli above, then choose a topic or ask your own question.</p>
+                  <button class="primary-action" (click)="exploreTopics()">Explore my reading <span>↗</span></button>
+                }
+              }
+            }
+          }
           @for (message of messages(); track message.id) {
             <app-message [message]="message" />
           }
+          @if (replyDraft()) {
+            <app-message [message]="{id: -1, role: 'assistant', content: replyDraft()}" />
+          }
           @if (showForm()) {
-            <app-birth-profile-form
+            <app-birth-profile-form id="birth-details"
               [initial]="profile()"
               [calculationError]="calculationError()"
               [busy]="calculating()"
               (save)="calculate($event)"
               (cancel)="showForm.set(false)"
             />
-          } @else if (chart(); as result) {
-            @if (profile(); as birth) {
-              <app-birth-chart-result
-                [chart]="result"
-                [profile]="birth"
-                (edit)="enterBirthDetails()"
-              />
-            }
           }
         </div>
       </section>
+    @if (chart() && !showForm() && !reviewingChart()) {
       <div class="bottom-composer">
-        <app-chat-input [showSuggestions]="false" (sendMessage)="sendMessage($event)" />
+        <p class="conversation-label">What’s on your mind? <span>Choose a topic or ask Tara.</span></p>
+        <app-chat-input [busy]="aiBusy() || calculating()" [showSuggestions]="true" (sendMessage)="sendMessage($event)" />
       </div>
     }
+    <div class="privacy-controls">
+      @if (calculating() || aiBusy()) {
+        <div class="processing" role="status" aria-live="polite">
+          <app-bot-avatar [thinking]="true" /><span class="processing-spinner" aria-hidden="true"></span>
+          <span>{{ calculating() ? 'Calculating your kundli and planetary positions…' : replyDraft() ? 'AI is writing your reading…' : 'AI is studying your kundli. This may take a moment…' }}</span>
+        </div>
+        @if (aiBusy()) {
+          <button class="theme-toggle" (click)="stopReply()">Stop response</button>
+        }
+      }
+      @if (aiError()) { <p role="alert">{{ aiError() }}</p> }
+      <label><input type="checkbox" [checked]="remember()" (change)="remember.set($any($event.target).checked)" /> Save birth details and chat on this browser</label>
+      <button class="theme-toggle" (click)="deleteSavedData()">Delete saved data</button>
+      @if (storageError()) { <p role="alert">{{ storageError() }}</p> }
+      <p>Sending a message shares your calculated chart and recent chat with our AI server. Saved data is unencrypted and stays on this browser.</p>
+    </div>
     <footer>
       ✧ &nbsp; A thoughtful guide, not a certainty.
-      <span>Astronomical calculations · No predictions · <a href="source/jyotish-ai-source.tar.gz" download>Source (AGPL)</a> · <a href="source/swisseph-0.2.2-source.tar.gz" download>Ephemeris source</a></span>
+      <span>AI astrology interpretations · Not reliable predictions · <a href="source/jyotish-ai-source.tar.gz" download>Source (AGPL)</a> · <a href="source/swisseph-0.2.2-source.tar.gz" download>Ephemeris source</a></span>
     </footer>
   </main>
 </div>

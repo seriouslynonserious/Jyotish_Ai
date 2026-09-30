@@ -1,0 +1,42 @@
+<div #viewport class="universe" [class.dimmed]="!exploring()" aria-hidden="true"></div>
+@if (exploring()) {
+  <section class="explorer" aria-label="Solar system explorer">
+    <div class="toolbar">
+      <button #returnButton class="return" (click)="leave()">← Return to Chat</button>
+      <button (click)="reset()" [disabled]="!ready()">Reset View</button>
+      <button (click)="focus(0)" [disabled]="!ready()">Focus on Sun</button>
+      <button (click)="togglePause()" [disabled]="!ready()" [attr.aria-pressed]="paused()">{{ paused() ? 'Play motion' : 'Pause motion' }}</button>
+      <button (click)="showInfo.set(!showInfo())" [attr.aria-pressed]="showInfo()">{{ showInfo() ? 'Hide info' : 'Show info' }}</button>
+    </div>
+    @if (notice()) { <p class="notice" role="status">{{ notice() }}</p> }
+    @if (selected() !== null && showInfo()) {
+      @let planet = planets[selected()!];
+      <aside class="info" aria-label="Selected planet information" aria-live="polite">
+        <span class="eyebrow">FOLLOWING {{ planet.name.toUpperCase() }}</span>
+        <h2>{{ planet.name }}</h2>
+        <p>{{ planet.fact }}</p>
+        <dl>
+          <div><dt>Mean distance from Sun</dt><dd>{{ planet.distance }}</dd></div>
+          <div><dt>Diameter</dt><dd>{{ planet.diameter }}</dd></div>
+          <div><dt>Orbital period</dt><dd>{{ planet.period }}</dd></div>
+          <div><dt>Sidereal rotation</dt><dd>{{ planet.rotation }}</dd></div>
+          <div><dt>Known moons · source snapshot</dt><dd>{{ planet.moons }}</dd></div>
+          <div><dt>Mean temperature*</dt><dd>{{ planet.temperature }}</dd></div>
+        </dl>
+        <small>*Gas/ice giant temperatures refer to atmospheric levels, not solid surfaces. Moon counts may lag discoveries.</small>
+        <a [href]="selected() === 0 ? 'https://science.nasa.gov/sun/facts/' : source" target="_blank" rel="noopener">NASA facts · retrieved 30 Sep 2026 ↗</a>
+      </aside>
+    }
+    <div class="navigation">
+      <p>Drag to orbit · right-drag to pan · scroll to zoom<br />Touch: one finger rotates · two fingers pan / pinch · Esc returns to chat</p>
+      <nav aria-label="Planet navigator">
+        @for (planet of planets; track planet.name; let i = $index) {
+          <button [disabled]="!ready()" [attr.aria-pressed]="selected() === i" (click)="focus(i)">{{ planet.name }}</button>
+        }
+      </nav>
+      <small>Compressed scale · accelerated circular orbits · not live ephemeris positions.<br />Textures: <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener">Solar System Scope</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></small>
+    </div>
+  </section>
+} @else {
+  <div class="background-control"><button (click)="togglePause()" [disabled]="!ready()" [attr.aria-pressed]="paused()">{{ paused() ? '▶ Play space' : 'Ⅱ Pause space' }}</button>@if (notice()) { <small role="status">{{ notice() }}</small> }</div>
+}

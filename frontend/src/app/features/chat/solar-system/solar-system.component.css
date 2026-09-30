@@ -1,0 +1,21 @@
+:host { position: fixed; inset: 0; z-index: 0; color: #e5edf7; }
+:host.exploring { z-index: 10; }
+.universe { position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 30%, #15273f, #02040c 75%); transition: filter .6s; }
+.universe.dimmed { filter: brightness(.72) saturate(.8); pointer-events: none; }
+.explorer { position: absolute; inset: 0; pointer-events: none; }
+button, a, .info, .navigation { pointer-events: auto; }
+button { border: 1px solid #8bacc438; background: #0b182bc9; color: #e5edf7; border-radius: 24px; padding: 10px 15px; font-size: 12px; backdrop-filter: blur(12px); }
+button[aria-pressed=true], .return { border-color: #7ed6e3; color: #a3eff5; }
+.toolbar { position: absolute; top: 20px; left: 20px; right: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+.info { position: absolute; top: 88px; right: 24px; width: 270px; padding: 22px; border: 1px solid #91c3e02b; border-radius: 20px; background: #071322ce; backdrop-filter: blur(18px); max-height: calc(100dvh - 275px); overflow-y: auto; }
+.eyebrow { font-size: 9px; letter-spacing: 2px; color: #8ed4df; }
+h2 { margin: 10px 0; font: 36px Georgia,serif; } p { font-size: 12px; line-height: 1.7; color: #b8cddd; }
+dl { margin: 18px 0; } dl div { margin-bottom: 11px; } dt { color: #9ab2c7; font-size: 10px; } dd { margin: 3px 0 0; font-size: 13px; }
+small { display: block; font-size: 9px; color: #9cb2c5; line-height: 1.6; } a { color: #a1d7e4; font-size: 10px; }.info a { display: block; margin-top: 12px; }
+.navigation { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); width: min(850px,calc(100% - 32px)); text-align: center; }
+.navigation p { font-size: 10px; text-shadow: 0 1px 4px #000; }
+nav { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin: 8px 0; }
+.background-control { position: absolute; right: 18px; bottom: 18px; max-width: 230px; z-index: 1; }.background-control button { font-size: 10px; }
+.notice { position: absolute; top: 80px; left: 20px; max-width: 280px; }
+@media(max-width:700px) { .toolbar { top: 12px; left: 12px; right: 12px; gap: 5px; } button { font-size: 10px; padding: 8px 10px; }.info { top: 105px; right: 12px; width: 200px; padding: 14px; max-height: min(190px, calc(100dvh - 320px)); } h2 { font-size: 28px; }.navigation { bottom: 8px; }.navigation p { font-size: 9px; }.background-control { right: 10px; bottom: 10px; } }
+@media(prefers-reduced-motion:reduce) { .universe { transition: none; } }

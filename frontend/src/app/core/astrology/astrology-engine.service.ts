@@ -44,7 +44,7 @@ export class AstrologyEngineService {
         'Coordinates affect Lagna and houses; planetary positions remain geocentric.',
         ...(ascendant === null ? ['Lagna and houses: Not calculated yet for latitudes at or beyond 66° north/south.'] : []),
         'Historical time accuracy depends on IANA timezone data and Swiss Ephemeris time models.',
-        'Chart calculations are available; interpretations and predictions are not.',
+        'Chart calculations are deterministic; AI interpretations are separate and uncertain.',
       ],
     };
   }

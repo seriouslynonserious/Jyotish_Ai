@@ -1,0 +1,14 @@
+// NASA Planetary Fact Sheet snapshot, retrieved 2026-09-30.
+// Moon counts are source-snapshot counts, not a live discovery feed.
+export const FACT_SOURCE = 'https://nssdc.gsfc.nasa.gov/planetary/factsheet/';
+export const PLANETS = [
+  { name: 'Sun', texture: '2k_sun.jpg', radius: 2.5, orbit: 0, tilt: 7.25, distance: 'Solar system center', diameter: '1,392,000 km (approx.)', period: 'Not applicable', rotation: 'About 25 days at equator', moons: 'Not applicable', temperature: 'About 5,500°C (surface)', fact: 'Our star supplies the light illuminating every planet.' },
+  { name: 'Mercury', texture: '2k_mercury.jpg', radius: .32, orbit: 5, tilt: .034, distance: '57.9 million km', diameter: '4,879 km', period: '88 days', rotation: '1,407.6 hours', moons: '0', temperature: '167°C', fact: 'The smallest planet has a heavily cratered surface.' },
+  { name: 'Venus', texture: '2k_venus_surface.jpg', radius: .65, orbit: 7, tilt: 177.4, distance: '108.2 million km', diameter: '12,104 km', period: '224.7 days', rotation: '5,832.5 hours · retrograde', moons: '0', temperature: '464°C', fact: 'Surface map shown beneath its normally opaque atmosphere.' },
+  { name: 'Earth', texture: '2k_earth_daymap.jpg', radius: .7, orbit: 9.5, tilt: 23.4, distance: '149.6 million km', diameter: '12,756 km', period: '365.2 days', rotation: '23.9 hours', moons: '1', temperature: '15°C', fact: 'Liquid oceans cover much of our home planet.' },
+  { name: 'Mars', texture: '2k_mars.jpg', radius: .48, orbit: 12, tilt: 25.2, distance: '228 million km', diameter: '6,792 km', period: '687 days', rotation: '24.6 hours', moons: '2', temperature: '−65°C', fact: 'Iron minerals give Mars its rusty appearance.' },
+  { name: 'Jupiter', texture: '2k_jupiter.jpg', radius: 1.65, orbit: 16, tilt: 3.1, distance: '778.5 million km', diameter: '142,984 km', period: '4,331 days', rotation: '9.9 hours', moons: '95', temperature: '−110°C', fact: 'The largest planet rotates in less than ten hours.' },
+  { name: 'Saturn', texture: '2k_saturn.jpg', radius: 1.4, orbit: 22, tilt: 26.7, distance: '1,432 million km', diameter: '120,536 km', period: '10,747 days', rotation: '10.7 hours', moons: '274', temperature: '−140°C', fact: 'Its bright rings contain countless pieces of ice and rock.' },
+  { name: 'Uranus', texture: '2k_uranus.jpg', radius: .95, orbit: 28, tilt: 97.8, distance: '2,867 million km', diameter: '51,118 km', period: '30,589 days', rotation: '17.2 hours · retrograde', moons: '28', temperature: '−195°C', fact: 'Its extreme axial tilt makes it roll along its orbit.' },
+  { name: 'Neptune', texture: '2k_neptune.jpg', radius: .9, orbit: 34, tilt: 28.3, distance: '4,515 million km', diameter: '49,528 km', period: '59,800 days', rotation: '16.1 hours', moons: '16', temperature: '−200°C', fact: 'The outermost planet is a blue ice giant.' },
+] as const;

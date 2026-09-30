@@ -7,5 +7,4 @@ import { Component, output } from '@angular/core';
 })
 export class SidebarComponent {
   newChat = output<void>();
-  readonly recentChats = ['Career prediction', 'Marriage prediction', 'Job timing'];
 }
